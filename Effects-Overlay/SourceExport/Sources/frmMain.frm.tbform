@@ -1,0 +1,53 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 532,
+      "ScaleMode": 3,
+      "ScaleHeight": 437,
+      "MinButton": 0,
+      "MaxButton": 0,
+      "LinkTopic": "Form1",
+      "ClientWidth": 7980,
+      "ClientTop": 375,
+      "ClientLeft": 45,
+      "ClientHeight": 6555,
+      "Caption": "Direct2D blending modes",
+      "BorderStyle": 1,
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{3F2174FF-4E2C-471D-A8DF-0FAABD7EEF63}",
+      "Width":532,
+      "Height":437,
+      "Name":"frmMain",
+      "_children": [      {
+         "Width":522,
+         "Top":4,
+         "TabIndex": 0,
+         "ScaleWidth": 522,
+         "ScaleMode": 3,
+         "ScaleHeight": 392,
+         "Left":4,
+         "Height":392,
+         "BorderStyle": 0,
+         "FontName":"MS Sans Serif",
+         "_clsid": "{33AD4ED0-6699-11CF-B70C-00AA0060D393}",
+         "_className": "PictureBox",
+         "Name":"picResult"
+      },
+            {
+         "Width":525,
+         "Top":400,
+         "TabIndex": 1,
+         "Style": 2,
+         "List":["    D2D1_BLEND_MODE_MULTIPLY = 0,","    D2D1_BLEND_MODE_SCREEN = 1,","    D2D1_BLEND_MODE_DARKEN = 2,","    D2D1_BLEND_MODE_LIGHTEN = 3,","    D2D1_BLEND_MODE_DISSOLVE = 4,","    D2D1_BLEND_MODE_COLOR_BURN = 5,","    D2D1_BLEND_MODE_LINEAR_BURN = 6,","    D2D1_BLEND_MODE_DARKER_COLOR = 7,","    D2D1_BLEND_MODE_LIGHTER_COLOR = 8,","    D2D1_BLEND_MODE_COLOR_DODGE = 9,","    D2D1_BLEND_MODE_LINEAR_DODGE = 10,","    D2D1_BLEND_MODE_OVERLAY = 11,","    D2D1_BLEND_MODE_SOFT_LIGHT = 12,","    D2D1_BLEND_MODE_HARD_LIGHT = 13,","    D2D1_BLEND_MODE_VIVID_LIGHT = 14,","    D2D1_BLEND_MODE_LINEAR_LIGHT = 15,","    D2D1_BLEND_MODE_PIN_LIGHT = 16,","    D2D1_BLEND_MODE_HARD_MIX = 17,","    D2D1_BLEND_MODE_DIFFERENCE = 18,","    D2D1_BLEND_MODE_EXCLUSION = 19,","    D2D1_BLEND_MODE_HUE = 20,","    D2D1_BLEND_MODE_SATURATION = 21,","    D2D1_BLEND_MODE_COLOR = 22,","    D2D1_BLEND_MODE_LUMINOSITY = 23,","    D2D1_BLEND_MODE_SUBTRACT = 24,","    D2D1_BLEND_MODE_DIVISION = 25"],
+         "Left":4,
+         "ItemData":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+         "Height":21,
+         "FontName":"MS Sans Serif",
+         "_clsid": "{33AD4F08-6699-11CF-B70C-00AA0060D393}",
+         "_className": "ComboBox",
+         "Name":"cboMode"
+      }
+      ]
+   }
+]

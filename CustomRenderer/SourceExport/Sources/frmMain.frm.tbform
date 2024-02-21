@@ -1,0 +1,20 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 479,
+      "ScaleMode": 3,
+      "ScaleHeight": 419,
+      "LinkTopic": "Form1",
+      "ClientWidth": 7185,
+      "ClientTop": 450,
+      "ClientLeft": 120,
+      "ClientHeight": 6285,
+      "Caption": "Custom renderer and effects",
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{ED75D0A6-0050-4AA3-8DB8-692530041C95}",
+      "Width":479,
+      "Height":419,
+      "Name":"frmMain"
+   }
+]

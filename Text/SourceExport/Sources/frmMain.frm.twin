@@ -1,0 +1,61 @@
+[FormDesignerId("B8EAE821-9129-4CF8-A05E-5B1689B6300D")]
+[ClassId("8FF62B98-EC9A-415A-8CF6-AE3B83E90D40")]
+[InterfaceId("00FB1AD7-6A9F-41E7-A88E-F049B8BA8C93")]
+[EventInterfaceId("79C78A21-5437-4DF3-B0EB-1D13CB13999C")]
+Class frmMain
+    Attribute VB_Name = "frmMain"
+    Attribute VB_GlobalNameSpace = False
+    Attribute VB_Creatable = False
+    Attribute VB_PredeclaredId = True
+    Attribute VB_Exposed = False
+    ' // DirectWrite basic drawing example
+    
+    Option Explicit
+    
+    Dim cD2dFactory As ID2D1Factory
+    Dim cDWFactory  As IDWriteFactory
+    Dim cTarget     As ID2D1HwndRenderTarget
+    Dim cTextFormat As IDWriteTextFormat
+    Dim cBrush      As ID2D1Brush
+    
+    Private Sub Form_Load()
+        
+        Set cD2dFactory = D2D1.CreateFactory
+        
+        Set cTarget = cD2dFactory.CreateHwndRenderTarget(D2D1.RenderTargetProperties( _
+                                        D2D1.PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM)), _
+                                        D2D1.HwndRenderTargetProperties(Me.hWnd, D2D1.SizeU))
+        
+        Set cDWFactory = DW.CreateFactory(DWRITE_FACTORY_TYPE_SHARED)
+        
+        ' // Create text format
+        Set cTextFormat = cDWFactory.CreateTextFormat(StrPtr("Arial"), Nothing, DWRITE_FONT_WEIGHT_NORMAL, _
+                                        DWRITE_FONT_STYLE_NORMAL, DWRITE_FONT_STRETCH_NORMAL, _
+                                        19# * 96# / 72#, StrPtr("en-US"))
+                                        
+        ' // Color brush
+        Set cBrush = cTarget.CreateSolidColorBrush(D2D1.ColorF(Red), vbNullPtr)
+                                        
+    End Sub
+    
+    Private Sub Form_Paint()
+        Dim sText   As String
+
+        sText = "Hello World!"
+        
+        cTarget.BeginDraw
+        
+        cTarget.Clear D2D1.ColorF(Ivory)
+        
+        cTarget.DrawText StrPtr(sText), Len(sText), ByVal cTextFormat, D2D1.RectF(20, 20, 220, 120), cBrush, 0, 0
+    
+        cTarget.EndDraw ByVal 0, ByVal 0
+        
+    End Sub
+    
+    Private Sub Form_Resize()
+        cTarget.Resize D2D1.SizeU(Me.ScaleWidth, Me.ScaleHeight)
+    End Sub
+    
+
+End Class

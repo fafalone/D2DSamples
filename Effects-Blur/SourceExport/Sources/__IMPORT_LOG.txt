@@ -1,0 +1,26 @@
+
+Import from Visual Basic VBP file 'C:\tbproj\D2D-TheTrick\Demos\Effects\Blur\Blur.vbp'...
+   successfully set project.buildType to 'Standard EXE' at line #1
+   ***WARNING*** converted relative reference path from '..\..\..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb' to '\\?\Windows\SysWOW64\stdole2.tlb' at line #2
+   successfully added project.reference 'OLE Automation' at line #2
+   ***WARNING*** converted relative reference path from '..\..\..\D2DVB.tlb' to '\\?\C:\tbproj\D2D-TheTrick\D2DVB.tlb' at line #3
+   successfully added project.reference 'Direct2D1 for Visual Basic 6.0 type library by The trick v2.00' at line #3
+   ***WARNING*** converted relative reference path from '..\..\..\wicvb.tlb' to '\\?\C:\tbproj\D2D-TheTrick\wicvb.tlb' at line #4
+   successfully added project.reference 'Wincodec for Visual Basic 6.0 type library by The trick v1.00' at line #4
+   successfully imported MODULE '..\..\..\Modules\D2D1.bas' at line #6
+   successfully imported MODULE '..\..\..\Modules\D2D1Effects.bas' at line #7
+   successfully imported MODULE '..\..\..\Modules\WIC.bas' at line #8
+   successfully added project.reference [COMPONENT] 'comctl32.Ocx' at line #9
+   successfully set project.startupObject to 'frmMain' at line #11
+   successfully set project.appHelpFile to '' at line #12
+   successfully set project.appTitle to 'Blur' at line #13
+   successfully imported Command Line Arguments '' at line #14
+   successfully set project.name to 'Blur' at line #15
+   successfully set project.versionMajor to '1' at line #18
+   successfully set project.versionMinor to '0' at line #19
+   successfully set project.versionRevision to '0' at line #20
+   successfully set project.versionCompanyName to 'Microsoft' at line #23
+   successfully imported FORM 'frmMain.frm' at line #5
+IMPORT FINISHED WITH 0 ERRORS/WARNINGS
+
+(you can delete this log file)
