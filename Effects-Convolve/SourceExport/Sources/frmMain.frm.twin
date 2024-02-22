@@ -1,0 +1,128 @@
+[FormDesignerId("59880539-29E2-4282-A23A-1C3DEF494D05")]
+[ClassId("8C978A30-161E-45A8-AD6C-CA82174D15C8")]
+[InterfaceId("B8A61E3E-2AA8-48A7-86D8-472897653132")]
+[EventInterfaceId("C019C5A3-B326-4465-9BFB-460828974DB9")]
+Class frmMain
+    Attribute VB_Name = "frmMain"
+    Attribute VB_GlobalNameSpace = False
+    Attribute VB_Creatable = False
+    Attribute VB_PredeclaredId = True
+    Attribute VB_Exposed = False
+    ' //
+    ' // Direct2D convolve effect demo by The trick
+    ' //
+    
+    Option Explicit
+    
+    Private Const GENERIC_READ As Long = &H80000000
+    
+    Private m_cFactory      As ID2D1Factory
+    Private m_cWICFactory   As WICImagingFactory
+    Private m_cRenderTarget As ID2D1DeviceContext
+    Private m_cEffect       As ID2D1Effect
+    
+    Private Sub Form_Load()
+        Dim cBitmap     As ID2D1Bitmap
+        Dim cHwndTgt    As ID2D1HwndRenderTarget
+    
+        ' // Create a factory
+        Set m_cFactory = D2D1.CreateFactory()
+    
+        ' // Create render target
+        Set m_cRenderTarget = m_cFactory.CreateHwndRenderTarget(D2D1.RenderTargetProperties(D2D1.PixelFormat()), _
+                                                                D2D1.HwndRenderTargetProperties(picResult.hWnd, D2D1.SizeU()))
+        
+        Set cHwndTgt = m_cRenderTarget
+        
+        cHwndTgt.Resize D2D1.SizeU(picResult.ScaleWidth, picResult.ScaleHeight)
+    
+        Set cBitmap = LoadImage(App.Path & "\image_01.jpg", m_cRenderTarget)
+    
+        ' // Create blur effect
+        Set m_cEffect = m_cRenderTarget.CreateEffect(CLSID_D2D1ConvolveMatrix)
+    
+        m_cEffect.SetInput 0, cBitmap
+    
+        Update
+        
+    End Sub
+    
+    Private Function LoadImage( _
+                     ByRef sPath As String, _
+                     ByVal cRenderTarget As ID2D1RenderTarget) As ID2D1Bitmap
+        Dim cDecoder        As IWICBitmapDecoder
+        Dim cFrameDecode    As IWICBitmapFrameDecode
+        Dim cConverter      As IWICFormatConverter
+        
+        If m_cWICFactory Is Nothing Then
+            Set m_cWICFactory = New WICImagingFactory
+        End If
+        
+        Set cDecoder = m_cWICFactory.CreateDecoderFromFilename(StrPtr(sPath), vbNullPtr, GENERIC_READ, WICDecodeMetadataCacheOnLoad)
+        Set cFrameDecode = cDecoder.GetFrame(0)
+        Set cConverter = m_cWICFactory.CreateFormatConverter()
+        
+        cConverter.Initialize cFrameDecode, GUID_WICPixelFormat32bppPBGRA, WICBitmapDitherTypeNone, Nothing, 0, WICBitmapPaletteTypeMedianCut
+        
+        Set LoadImage = cRenderTarget.CreateBitmapFromWicBitmap(ByVal cConverter, vbNullPtr)
+        
+    End Function
+    
+    Private Sub picResult_Paint()
+    
+        m_cRenderTarget.BeginDraw
+        
+        m_cRenderTarget.Clear D2D1.ColorF(Indigo)
+    
+        m_cRenderTarget.DrawImage m_cEffect, vbNullPtr, vbNullPtr
+        
+        m_cRenderTarget.EndDraw ByVal 0, ByVal 0
+        
+    End Sub
+    
+    Private Sub Update()
+        Dim fMatrix(2, 2)   As Single
+        Dim lIndex          As Long
+        
+        For lIndex = 0 To 8
+            
+            If IsNumeric(txtMatrix(lIndex)) Then
+                fMatrix(lIndex Mod 3, lIndex \ 3) = CDbl(txtMatrix(lIndex))
+            Else
+                fMatrix(lIndex Mod 3, lIndex \ 3) = 0
+            End If
+            
+        Next
+        
+        'TEMP BUG WORKAROUND FOR TWINBASIC:
+        If sldDivisor.Value = 0 Then sldDivisor.Value = 1
+        
+        m_cEffect.SetValue D2D1_CONVOLVEMATRIX_PROP_KERNEL_MATRIX, D2D1_PROPERTY_TYPE_UNKNOWN, fMatrix(0, 0), _
+                           LenB(fMatrix(0, 0)) * 9
+        m_cEffect.SetValue D2D1_CONVOLVEMATRIX_PROP_DIVISOR, D2D1_PROPERTY_TYPE_FLOAT, CSng(sldDivisor.Value / 10), 4
+        m_cEffect.SetValue D2D1_CONVOLVEMATRIX_PROP_BIAS, D2D1_PROPERTY_TYPE_FLOAT, CSng(sldBias.Value / 100), 4
+        
+        picResult_Paint
+        
+    End Sub
+    
+    Private Sub sldDivisor_Change()
+        Update
+    End Sub
+    Private Sub sldDivisor_Scroll()
+        Update
+    End Sub
+    Private Sub sldBias_Change()
+        Update
+    End Sub
+    Private Sub sldBias_Scroll()
+        Update
+    End Sub
+    
+    Private Sub txtMatrix_Change( _
+                ByRef iIndex As Integer)
+        Update
+    End Sub
+    
+
+End Class
