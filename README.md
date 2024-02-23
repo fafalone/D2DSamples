@@ -22,3 +22,9 @@ CustomRenderer:\
 
 BlendingModes:\
 ![image](https://github.com/fafalone/D2DSamples/assets/7834493/ca7e60da-c095-44ac-b9ba-1c0620ba0d6c)
+
+InlineObject:\
+![image](https://github.com/fafalone/D2DSamples/assets/7834493/32884aec-83be-477a-af99-b3296747ebb7)
+
+Interpolation:\
+![image](https://github.com/fafalone/D2DSamples/assets/7834493/7629b54d-c8f5-4176-9523-061eac5b7208)
