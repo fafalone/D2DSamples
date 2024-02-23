@@ -1,0 +1,19 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 4710,
+      "ScaleHeight": 3600,
+      "LinkTopic": "Form1",
+      "ClientWidth": 4710,
+      "ClientTop": 450,
+      "ClientLeft": 120,
+      "ClientHeight": 3600,
+      "Caption": "Form1",
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{E17BC5C2-FCF1-44E4-AA74-F781E5B111A4}",
+      "Width":314,
+      "Height":240,
+      "Name":"frmMain"
+   }
+]

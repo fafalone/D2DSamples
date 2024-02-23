@@ -1,0 +1,58 @@
+[FormDesignerId("E17BC5C2-FCF1-44E4-AA74-F781E5B111A4")]
+[ClassId("BEED1B39-A05F-4484-A448-A588705CA604")]
+[InterfaceId("D24C8845-1C35-4A21-AFDB-2C0E99AF74AB")]
+[EventInterfaceId("805D6936-5E4A-43C3-A5A4-04008340C117")]
+Class frmMain
+    Attribute VB_Name = "frmMain"
+    Attribute VB_GlobalNameSpace = False
+    Attribute VB_Creatable = False
+    Attribute VB_PredeclaredId = True
+    Attribute VB_Exposed = False
+    Option Explicit
+    
+    Dim mcFactory       As ID2D1Factory
+    Dim mcHwndTarget    As ID2D1HwndRenderTarget
+    Dim mcMemTarget     As ID2D1BitmapRenderTarget
+ 
+    Private Sub Form_Load()
+        Dim cBrush  As ID2D1SolidColorBrush
+        
+        Me.ScaleMode = vbPixels
+        
+        Set mcFactory = D2D1.CreateFactory()
+        
+        Set mcHwndTarget = mcFactory.CreateHwndRenderTarget(D2D1.RenderTargetProperties(D2D1.PixelFormat()), _
+                                                            D2D1.HwndRenderTargetProperties( _
+                                                            Me.hWnd, D2D1.SizeU(100, 100)))
+        Set mcMemTarget = mcHwndTarget.CreateCompatibleRenderTarget(vbNullPtr, vbNullPtr, vbNullPtr, D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_NONE)
+        
+        Set cBrush = mcMemTarget.CreateSolidColorBrush(D2D1.ColorF(BurlyWood), vbNullPtr)
+        
+        ' // Paint to mem target
+        mcMemTarget.BeginDraw
+        
+        mcMemTarget.DrawEllipse D2D1.Ellipse(D2D1.Point2F(30, 30), 15, 15), cBrush, 3
+        mcMemTarget.DrawLine PointFToLongLong(0, 0), PointFToLongLong(80, 90), cBrush, 1
+        
+        mcMemTarget.EndDraw ByVal 0, ByVal 0
+        
+    End Sub
+    
+    Private Sub Form_Paint()
+        
+        ' // Draw to hwnd
+        mcHwndTarget.BeginDraw
+        
+        mcHwndTarget.DrawBitmap mcMemTarget.GetBitmap, D2D1.RectF(0, 0, Me.ScaleWidth, Me.ScaleHeight), _
+                                1, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, vbNullPtr
+        
+        mcHwndTarget.EndDraw ByVal 0&, ByVal 0&
+        
+    End Sub
+    
+    Private Sub Form_Resize()
+        mcHwndTarget.Resize D2D1.SizeU(Me.ScaleWidth, Me.ScaleHeight)
+    End Sub
+    
+
+End Class

@@ -1,0 +1,94 @@
+[FormDesignerId("85CC1E76-C234-4D77-8C2E-E99C64AF3469")]
+[ClassId("CB4DE125-6DEA-4FD7-96D4-D9DD7F9AA0BC")]
+[InterfaceId("616C50BA-7257-4FC9-9CC7-FB58F157CD49")]
+[EventInterfaceId("8920321C-3E7D-4099-8E42-1B7C1E71F5B6")]
+Class frmMain
+    Attribute VB_Name = "frmMain"
+    Attribute VB_GlobalNameSpace = False
+    Attribute VB_Creatable = False
+    Attribute VB_PredeclaredId = True
+    Attribute VB_Exposed = False
+    
+    ' // DirectWrite inline object implementation example
+    
+    Option Explicit
+    
+    Dim cD2dFactory As ID2D1Factory
+    Dim cDWFactory  As IDWriteFactory
+    Dim cTarget     As ID2D1HwndRenderTarget
+    Dim cTextFormat As IDWriteTextFormat
+    Dim cTextlayout As IDWriteTextLayout
+    Dim cBrush      As ID2D1Brush
+    
+    Private sText   As String
+    
+    Private Sub Form_Load()
+        Dim cSmile  As CInlineObject    ' // Object inside line
+        
+        sText = "DirectWrite _ twin BASIC example!!"
+        
+        Set cD2dFactory = D2D1.CreateFactory
+        
+        Set cTarget = cD2dFactory.CreateHwndRenderTarget(D2D1.RenderTargetProperties( _
+                                        D2D1.PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM)), _
+                                        D2D1.HwndRenderTargetProperties(Me.hWnd, D2D1.SizeU))
+        
+        Set cDWFactory = DW.CreateFactory(DWRITE_FACTORY_TYPE_SHARED)
+        Set cTextFormat = cDWFactory.CreateTextFormat(StrPtr("Arial"), Nothing, DWRITE_FONT_WEIGHT_NORMAL, _
+                                        DWRITE_FONT_STYLE_NORMAL, DWRITE_FONT_STRETCH_NORMAL, _
+                                        19# * 96# / 72#, StrPtr("en-US"))
+                                        
+        Set cTextlayout = cDWFactory.CreateTextLayout(StrPtr(sText), Len(sText), cTextFormat, Me.ScaleWidth, Me.ScaleHeight)
+        
+        ' // Set different options
+        cTextlayout.SetFontWeight DWRITE_FONT_WEIGHT_BOLD, PointToLongLong(4, 6)
+     
+        cTextlayout.SetFontSize 11 * 96 / 72, PointToLongLong(21, 5)
+    
+        cTextlayout.SetFontStyle DWRITE_FONT_STYLE_ITALIC, PointToLongLong(0, 6)
+        
+        cTextlayout.SetStrikethrough 1, PointToLongLong(29, 7)
+        
+        cTextlayout.SetTextAlignment DWRITE_TEXT_ALIGNMENT_CENTER
+        cTextlayout.SetParagraphAlignment DWRITE_PARAGRAPH_ALIGNMENT_CENTER
+        
+        cTextlayout.SetUnderline 1, PointToLongLong(6, 5)
+        
+        Set cBrush = cTarget.CreateSolidColorBrush(D2D1.ColorF(Red), vbNullPtr)
+                                                                        
+        ' // Add inline object
+        Set cSmile = New CInlineObject
+        
+        cSmile.Initialize cTarget, App.Path & "\icon.png"
+        
+        cTextlayout.SetInlineObject cSmile, PointToLongLong(12, 1)
+        
+    End Sub
+    
+    Private Sub Form_Paint()
+        
+        cTarget.BeginDraw
+        
+        cTarget.Clear D2D1.ColorF(Ivory)
+        
+        cTarget.DrawTextLayout PointToLongLong(0, 0), ByVal cTextlayout, cBrush
+        
+        cTarget.EndDraw ByVal 0, ByVal 0
+        
+    End Sub
+    
+    Private Sub Form_Resize()
+        
+        cTextlayout.SetMaxWidth Me.ScaleWidth
+        cTextlayout.SetMaxHeight Me.ScaleHeight
+        
+        cTarget.Resize D2D1.SizeU(Me.ScaleWidth, Me.ScaleHeight)
+        
+        Form_Paint
+        
+    End Sub
+    
+    
+    
+
+End Class

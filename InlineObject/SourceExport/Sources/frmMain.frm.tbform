@@ -1,0 +1,20 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 482,
+      "ScaleMode": 3,
+      "ScaleHeight": 383,
+      "LinkTopic": "Form1",
+      "ClientWidth": 7230,
+      "ClientTop": 450,
+      "ClientLeft": 120,
+      "ClientHeight": 5745,
+      "Caption": "Inline object test",
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{85CC1E76-C234-4D77-8C2E-E99C64AF3469}",
+      "Width":482,
+      "Height":383,
+      "Name":"frmMain"
+   }
+]
