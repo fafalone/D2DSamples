@@ -1,0 +1,20 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 570,
+      "ScaleMode": 3,
+      "ScaleHeight": 201,
+      "LinkTopic": "Form1",
+      "ClientWidth": 8550,
+      "ClientTop": 450,
+      "ClientLeft": 120,
+      "ClientHeight": 3015,
+      "Caption": "DirectWrite custom font demo",
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{B4DAE785-018C-453E-A062-DF12CB9F1ECD}",
+      "Width":570,
+      "Height":201,
+      "Name":"frmMain"
+   }
+]

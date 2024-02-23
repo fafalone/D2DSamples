@@ -1,0 +1,7 @@
+frmMain = 75, 75, 801, 618, , 25, 25, 751, 568, C
+CFontFileLoader = 75, 75, 801, 618, 
+CFontFileStream = 100, 100, 826, 643, 
+CFontCollectionLoader = 150, 150, 876, 693, 
+CFontFileEnumerator = 175, 175, 901, 718, 
+D2D1 = 175, 175, 958, 718, 
+DW = 150, 150, 933, 693, Z

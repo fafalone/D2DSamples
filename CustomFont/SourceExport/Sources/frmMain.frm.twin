@@ -1,0 +1,113 @@
+[InterfaceId("6D4865FE-0AB8-4D91-8F62-5DD6BE34A3E0")]
+[Description("The interface for loading font file data.")]
+[OleAutomation(False)]
+Interface IDWriteFontFileStreamImp Extends IUnknown
+    [Description("Reads a fragment from a file.")]
+    Sub ReadFileFragment(ByRef fragmentStart As Any, ByVal fileOffset As LongLong, ByVal fragmentSize As LongLong, ByRef fragmentContext As Any)
+    '[PreserveSig]
+    [Description("Releases a fragment from a file.")]
+    Sub ReleaseFileFragment(ByRef fragmentContext As Any)
+    [Description("Obtains the total size of a file.")]
+    Function GetFileSize() As LongLong
+    [Description("Obtains the last modified time of the file. The last modified time is used by DirectWrite font selection algorithms to determine whether one font resource is more up to date than another one.")]
+    Function GetLastWriteTime() As LongLong
+End Interface
+
+[InterfaceId("CCA920E4-52F0-492B-BFA8-29C72EE0A468")]
+[Description("The font collection loader interface is used to construct a collection of fonts given a particular type of key.")]
+[OleAutomation(False)]
+Interface IDWriteFontCollectionLoaderImp Extends IUnknown
+    [Description("Creates a font file enumerator object that encapsulates a collection of font files.")]
+    Function CreateEnumeratorFromKey(ByVal factory As IDWriteFactory, ByRef collectionKey As Any, ByVal collectionKeySize As Long) As IDWriteFontFileEnumerator
+End Interface
+
+
+[FormDesignerId("B4DAE785-018C-453E-A062-DF12CB9F1ECD")]
+[ClassId("1EE18ED5-D8ED-4658-A3AE-0098740CC86B")]
+[InterfaceId("9E81CF6A-FCF1-4458-AAA6-0075A0239032")]
+[EventInterfaceId("2D5B8D73-8920-4C54-B168-0F18A3664D8D")]
+Class frmMain
+    Attribute VB_Name = "frmMain"
+    Attribute VB_GlobalNameSpace = False
+    Attribute VB_Creatable = False
+    Attribute VB_PredeclaredId = True
+    Attribute VB_Exposed = False
+    ' // DirectWrite custom font example
+    ' // This example contains two fonts in resources
+    ' // Application loads that fonts and draw text using that fonts
+    ' // By The trick 2018
+    
+    Option Explicit
+    
+    Dim cD2dFactory     As ID2D1Factory
+    Dim cDWFactory      As IDWriteFactory
+    Dim cTarget         As ID2D1HwndRenderTarget
+    Dim cTextFormat1    As IDWriteTextFormat
+    Dim cTextFormat2    As IDWriteTextFormat
+    Dim cBrush          As ID2D1Brush
+    Dim cFontLoader     As CFontCollectionLoader
+    
+    Private Sub Form_Load()
+        Dim cFontCollection As IDWriteFontCollection
+        
+        Set cD2dFactory = D2D1.CreateFactory
+        
+        Set cTarget = cD2dFactory.CreateHwndRenderTarget(D2D1.RenderTargetProperties( _
+                                        D2D1.PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM)), _
+                                        D2D1.HwndRenderTargetProperties(Me.hWnd, D2D1.SizeU))
+        
+        Set cDWFactory = DW.CreateFactory(DWRITE_FACTORY_TYPE_SHARED)
+        
+        ' // Create font collection
+        Set cFontLoader = New CFontCollectionLoader
+        
+        ' // Register our font loader
+        cDWFactory.RegisterFontCollectionLoader cFontLoader
+        
+        Set cFontCollection = cDWFactory.CreateCustomFontCollection(cFontLoader, 0, 1)
+    
+        ' // Create text formats using custom fonts
+        Set cTextFormat1 = cDWFactory.CreateTextFormat(StrPtr("pix 8BitFont_8pix"), cFontCollection, DWRITE_FONT_WEIGHT_NORMAL, _
+                                        DWRITE_FONT_STYLE_NORMAL, DWRITE_FONT_STRETCH_NORMAL, _
+                                        16, StrPtr("en-us"))
+        Set cTextFormat2 = cDWFactory.CreateTextFormat(StrPtr("pix 8 8pt"), cFontCollection, DWRITE_FONT_WEIGHT_NORMAL, _
+                                        DWRITE_FONT_STYLE_NORMAL, DWRITE_FONT_STRETCH_NORMAL, _
+                                        24, StrPtr("en-us"))
+        ' // Color brush
+        Set cBrush = cTarget.CreateSolidColorBrush(D2D1.ColorF(SkyBlue), vbNullPtr)
+        
+        cTextFormat1.SetTextAlignment DWRITE_TEXT_ALIGNMENT_CENTER
+        cTextFormat2.SetTextAlignment DWRITE_TEXT_ALIGNMENT_CENTER
+        
+    End Sub
+    
+    Private Sub Form_Paint()
+        Dim sText   As String
+        
+        sText = "Custom 8 bit FONT!"
+        
+        cTarget.BeginDraw
+        
+        cTarget.Clear D2D1.ColorF(Navy)
+        
+        cTarget.DrawText StrPtr(sText), Len(sText), ByVal cTextFormat1, D2D1.RectF(0, 20, ScaleWidth, 120), cBrush
+        
+        sText = "C u s t o m  8  b i t  F O N T !"
+        
+        cTarget.DrawText StrPtr(sText), Len(sText), ByVal cTextFormat2, D2D1.RectF(0, 80, ScaleWidth, 120), cBrush
+        
+        cTarget.EndDraw ByVal 0, ByVal 0
+        
+    End Sub
+    
+    Private Sub Form_Resize()
+        cTarget.Resize D2D1.SizeU(Me.ScaleWidth, Me.ScaleHeight)
+        Form_Paint
+    End Sub
+    
+    Private Sub Form_Unload(Cancel As Integer)
+        cDWFactory.UnregisterFontCollectionLoader cFontLoader
+    End Sub
+    
+
+End Class
