@@ -28,3 +28,18 @@ InlineObject:\
 
 Interpolation:\
 ![image](https://github.com/fafalone/D2DSamples/assets/7834493/7629b54d-c8f5-4176-9523-061eac5b7208)
+
+Strokes:\
+![image](https://github.com/fafalone/D2DSamples/assets/7834493/3f711647-1920-4e8e-9114-28de6b318f02)
+
+BasicDrawings:\
+![image](https://github.com/fafalone/D2DSamples/assets/7834493/9e0a2bd6-7fd0-4cb7-8307-f108d9cc1606)
+
+ImageDrawings:\
+![image](https://github.com/fafalone/D2DSamples/assets/7834493/8bc725f6-d659-4dd1-8196-6a422533860f)
+
+SaveImage:\
+![image](https://github.com/fafalone/D2DSamples/assets/7834493/dc2d9dbc-f5cf-483f-bb1a-7d56e73e70c0)
+
+Clip:\
+![image](https://github.com/fafalone/D2DSamples/assets/7834493/45d2c16f-8e36-4753-be0a-750881ba173a)
