@@ -1,0 +1,24 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 403,
+      "ScaleMode": 3,
+      "ScaleHeight": 363,
+      "MinButton": 0,
+      "MaxButton": 0,
+      "LinkTopic": "Form1",
+      "ClientWidth": 6045,
+      "ClientTop": 375,
+      "ClientLeft": 45,
+      "ClientHeight": 5445,
+      "Caption": "Save image",
+      "BorderStyle": 1,
+      "AutoRedraw": -1,
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{80282E78-8F6E-47B9-AD77-91453D3815CF}",
+      "Width":403,
+      "Height":363,
+      "Name":"frmMain"
+   }
+]

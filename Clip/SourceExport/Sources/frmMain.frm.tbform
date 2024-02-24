@@ -1,0 +1,23 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 397,
+      "ScaleMode": 3,
+      "ScaleHeight": 358,
+      "MinButton": 0,
+      "MaxButton": 0,
+      "LinkTopic": "Form1",
+      "ClientWidth": 5955,
+      "ClientTop": 375,
+      "ClientLeft": 45,
+      "ClientHeight": 5370,
+      "Caption": "Clip demo",
+      "BorderStyle": 3,
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{F3E339A8-C8D1-42D0-B026-2A1D77072478}",
+      "Width":397,
+      "Height":358,
+      "Name":"frmMain"
+   }
+]

@@ -1,0 +1,23 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 449,
+      "ScaleMode": 3,
+      "ScaleHeight": 370,
+      "MinButton": 0,
+      "MaxButton": 0,
+      "LinkTopic": "Form1",
+      "ClientWidth": 6735,
+      "ClientTop": 375,
+      "ClientLeft": 45,
+      "ClientHeight": 5550,
+      "Caption": "Strokes demo",
+      "BorderStyle": 1,
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{5233B5CB-D1FB-4C64-AA77-EC851BA5ED10}",
+      "Width":449,
+      "Height":370,
+      "Name":"frmMain"
+   }
+]

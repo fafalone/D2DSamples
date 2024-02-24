@@ -1,0 +1,26 @@
+
+Import from Visual Basic VBP file 'C:\tbproj\D2D-TheTrick\Demos\ImageDrawings\ImageDrawings.vbp'...
+   successfully set project.buildType to 'Standard EXE' at line #1
+   ***WARNING*** converted relative reference path from '..\..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb' to '\\?\Windows\SysWOW64\stdole2.tlb' at line #2
+   successfully added project.reference 'OLE Automation' at line #2
+   ***WARNING*** converted relative reference path from '..\..\D2DVB.tlb' to '\\?\C:\tbproj\D2D-TheTrick\D2DVB.tlb' at line #3
+   successfully added project.reference 'Direct2D1 for Visual Basic 6.0 type library by The trick v1.00' at line #3
+   ***WARNING*** converted relative reference path from '..\..\wicvb.tlb' to '\\?\C:\tbproj\D2D-TheTrick\wicvb.tlb' at line #4
+   successfully added project.reference 'Wincodec for Visual Basic 6.0 type library by The trick v1.00' at line #4
+   ***WARNING*** converted relative reference path from '..\..\..\olexp\oleexp51\oleexp.tlb' to '\\?\C:\tbproj\olexp\oleexp51\oleexp.tlb' at line #5
+   successfully added project.reference 'OLEEXP - Modern Shell Interfaces for VB6, v5.1' at line #5
+   successfully imported MODULE '..\..\Modules\D2D1.bas' at line #7
+   successfully imported MODULE '..\..\Modules\WIC.bas' at line #8
+   successfully set project.startupObject to 'frmMain' at line #10
+   successfully set project.appHelpFile to '' at line #11
+   successfully set project.appTitle to 'ImageDrawings' at line #12
+   successfully imported Command Line Arguments '' at line #14
+   successfully set project.name to 'ImageDrawings' at line #15
+   successfully set project.versionMajor to '1' at line #18
+   successfully set project.versionMinor to '0' at line #19
+   successfully set project.versionRevision to '0' at line #20
+   successfully set project.versionCompanyName to 'Microsoft' at line #23
+   successfully imported FORM 'frmMain.frm' at line #6
+IMPORT FINISHED WITH 0 ERRORS/WARNINGS
+
+(you can delete this log file)

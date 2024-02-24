@@ -1,0 +1,33 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 484,
+      "ScaleMode": 3,
+      "ScaleHeight": 424,
+      "MinButton": 0,
+      "MaxButton": 0,
+      "LinkTopic": "Form1",
+      "ClientWidth": 7260,
+      "ClientTop": 375,
+      "ClientLeft": 45,
+      "ClientHeight": 6360,
+      "Caption": "Image drawing",
+      "BorderStyle": 1,
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{2CB2CD60-D3F1-475A-9CC8-4BAF63B3345E}",
+      "Width":484,
+      "Height":424,
+      "Name":"frmMain",
+      "_children": [      {
+         "Top":320,
+         "Left":184,
+         "Interval": 50,
+         "FontName":"MS Sans Serif",
+         "_clsid": "{33AD4F28-6699-11CF-B70C-00AA0060D393}",
+         "_className": "Timer",
+         "Name":"Timer1"
+      }
+      ]
+   }
+]

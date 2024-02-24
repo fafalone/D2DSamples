@@ -1,0 +1,23 @@
+[
+   {
+      "StartUpPosition": 3,
+      "ScaleWidth": 485,
+      "ScaleMode": 3,
+      "ScaleHeight": 358,
+      "MinButton": 0,
+      "MaxButton": 0,
+      "LinkTopic": "Form1",
+      "ClientWidth": 7275,
+      "ClientTop": 375,
+      "ClientLeft": 45,
+      "ClientHeight": 5370,
+      "Caption": "Direct2D Basic drawing by The trick",
+      "BorderStyle": 1,
+      "FontName":"MS Sans Serif",
+      "_clsid": "{33AD4F38-6699-11CF-B70C-00AA0060D393}",
+      "FormDesignerId": "{574AB202-D529-4410-856E-1A0F9C187117}",
+      "Width":485,
+      "Height":358,
+      "Name":"frmBasicDrawing"
+   }
+]

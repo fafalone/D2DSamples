@@ -1,0 +1,19 @@
+
+Import from Visual Basic VBP file 'C:\tbproj\D2D-TheTrick\Demos\Clip\Clip.vbp'...
+   successfully set project.buildType to 'Standard EXE' at line #1
+   ***WARNING*** converted relative reference path from '..\..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb' to '\\?\Windows\SysWOW64\stdole2.tlb' at line #2
+   successfully added project.reference 'OLE Automation' at line #2
+   ***WARNING*** converted relative reference path from '..\..\D2DVB.tlb' to '\\?\C:\tbproj\D2D-TheTrick\D2DVB.tlb' at line #3
+   successfully added project.reference 'Direct2D1 for Visual Basic 6.0 type library by The trick v1.00' at line #3
+   successfully imported MODULE '..\..\Modules\D2D1.bas' at line #5
+   successfully set project.startupObject to 'frmMain' at line #6
+   successfully imported Command Line Arguments '' at line #7
+   successfully set project.name to 'Clip' at line #8
+   successfully set project.versionMajor to '1' at line #11
+   successfully set project.versionMinor to '0' at line #12
+   successfully set project.versionRevision to '0' at line #13
+   successfully set project.versionCompanyName to 'Microsoft' at line #16
+   successfully imported FORM 'frmMain.frm' at line #4
+IMPORT FINISHED WITH 0 ERRORS/WARNINGS
+
+(you can delete this log file)
