@@ -6,6 +6,7 @@ Attribute VB_Name = "WIC"
 
 Option Explicit
 
+[IgnoreWarnings(TB0015)]
 Private Declare PtrSafe Function GetMem8 Lib "msvbvm60" ( _
                          ByRef pSrc As Any, _
                          ByRef pDst As Any) As Long
@@ -20,7 +21,7 @@ Public Function WICRect( _
     
     .x = lX
     .y = lY
-    .Width = lWidth
+    .width = lWidth
     .Height = lHeight
     
     End With
