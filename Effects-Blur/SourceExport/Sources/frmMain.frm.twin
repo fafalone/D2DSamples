@@ -39,7 +39,7 @@ Class frmMain
         Set cBitmap = LoadImage(App.Path & "\image_01.jpg", m_cRenderTarget)
     
         ' // Create blur effect
-         m_cRenderTarget.CreateEffect(CLSID_D2D1GaussianBlur, m_cEffect)
+        Set m_cEffect = m_cRenderTarget.CreateEffect(CLSID_D2D1GaussianBlur)
     
         m_cEffect.SetInput 0, cBitmap, 1
         m_cEffect.SetValue D2D1_GAUSSIANBLUR_PROP_BORDER_MODE, D2D1_PROPERTY_TYPE_UNKNOWN, D2D1_BORDER_MODE_HARD, 4
@@ -60,8 +60,8 @@ Class frmMain
         End If
         
         Set cDecoder = m_cWICFactory.CreateDecoderFromFilename(StrPtr(sPath), vbNullPtr, GENERIC_READ, WICDecodeMetadataCacheOnLoad)
-        cDecoder.GetFrame(0, cFrameDecode)
-        m_cWICFactory.CreateFormatConverter(cConverter)
+        Set cFrameDecode = cDecoder.GetFrame(0)
+        Set cConverter = m_cWICFactory.CreateFormatConverter()
         
         cConverter.Initialize cFrameDecode, GUID_WICPixelFormat32bppPBGRA, WICBitmapDitherTypeNone, Nothing, 0, WICBitmapPaletteTypeMedianCut
         

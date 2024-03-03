@@ -8,6 +8,7 @@ Attribute VB_Name = "D2D1"
 
 Option Explicit
 
+[IgnoreWarnings(TB0015)]
 Private Declare PtrSafe Function GetMem8 Lib "msvbvm60" ( _
                          ByRef pSrc As Any, _
                          ByRef pDst As Any) As Long
@@ -1077,7 +1078,7 @@ Public Sub SetDpiCompensatedEffectInput( _
     GetMem8 511502141527783.9815@, tCLSID
     GetMem8 294592394174280.438@, ByVal VarPtr(tCLSID) + 8
     
-    cContext.CreateEffect(tCLSID, cDpiEffect)
+    Set cDpiEffect = cContext.CreateEffect(tCLSID)
     
     cDpiEffect.SetInput 0, cBitmap, 1
     cBitmap.GetDpi tDPI.x, tDPI.y

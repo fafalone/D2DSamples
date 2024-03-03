@@ -54,14 +54,17 @@
 		{
 			"id": "{1FCDB98D-617D-4995-9736-2ED0E4746A10}",
 			"licence": "CC0 1.0 Universal",
-			"name": "[IMPORTED] Windows Development Library for twinBASIC v7.6.312",
+			"name": "[IMPORTED] Windows Development Library for twinBASIC v7.6.325",
 			"path32": "/Packages/WinDevLib",
 			"path64": "/Packages/WinDevLib",
+			"publishedDate": "29-FEB-2024",
+			"publishedTime": "17:58:56",
+			"publisher": "fafalone",
 			"symbolId": "WinDevLib",
-			"versionBuild": "313",
+			"versionBuild": "325",
 			"versionMajor": "7",
 			"versionMinor": "6",
-			"versionRevision": "2"
+			"versionRevision": "0"
 		}
 	],
 	"project.settingsVersion": 1,
@@ -72,7 +75,9 @@
 	"project.versionRevision": 0,
 	"project.warnings": {
 		"errors": [],
-		"ignored": []
+		"hints": [],
+		"ignored": [],
+		"info": []
 	},
 	"runtime.useUnicodeStandardLibrary": true
 }

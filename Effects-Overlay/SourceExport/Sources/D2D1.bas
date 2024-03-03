@@ -8,6 +8,7 @@ Attribute VB_Name = "D2D1"
 
 Option Explicit
 
+[IgnoreWarnings(TB0015)]
 Private Declare PtrSafe Function GetMem8 Lib "msvbvm60" ( _
                          ByRef pSrc As Any, _
                          ByRef pDst As Any) As Long
@@ -1077,7 +1078,9 @@ Public Sub SetDpiCompensatedEffectInput( _
     cDpiEffect.SetValue D2D1_DPICOMPENSATION_PROP_INPUT_DPI, D2D1_PROPERTY_TYPE_UNKNOWN, tDPI, LenB(tDPI)
     cDpiEffect.SetValue D2D1_DPICOMPENSATION_PROP_INTERPOLATION_MODE, D2D1_PROPERTY_TYPE_UNKNOWN, eInterpolationMode, LenB(eInterpolationMode)
     cDpiEffect.SetValue D2D1_DPICOMPENSATION_PROP_BORDER_MODE, D2D1_PROPERTY_TYPE_UNKNOWN, eBorderMode, LenB(eBorderMode)
-    cEffect.SetInput lInputIndex, cDpiEffect.GetOutput
+    Dim pImg As ID2D1Image
+    cDpiEffect.GetOutput pImg
+    cEffect.SetInput lInputIndex, pImg
     
 End Sub
 

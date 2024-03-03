@@ -13,6 +13,7 @@ Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Option Explicit
 
+[IgnoreWarnings(TB0015)]
 Private Declare PtrSafe Function vbaObjSetAddref Lib "MSVBVM60.DLL" _
                          Alias "__vbaObjSetAddref" ( _
                          ByRef dstObject As Any, _

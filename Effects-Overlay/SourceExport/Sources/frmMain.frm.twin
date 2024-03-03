@@ -68,8 +68,8 @@ Class frmMain
         End If
         
         Set cDecoder = m_cWICFactory.CreateDecoderFromFilename(StrPtr(sPath), vbNullPtr, GENERIC_READ, WICDecodeMetadataCacheOnLoad)
-        cDecoder.GetFrame(0, cFrameDecode)
-        m_cWICFactory.CreateFormatConverter(cConverter)
+        Set cFrameDecode = cDecoder.GetFrame(0)
+        Set cConverter = m_cWICFactory.CreateFormatConverter()
         
         cConverter.Initialize cFrameDecode, GUID_WICPixelFormat32bppPBGRA, WICBitmapDitherTypeNone, Nothing, 0, WICBitmapPaletteTypeMedianCut
         

@@ -6,9 +6,11 @@ Attribute VB_Name = "DW"
 
 Option Explicit
 
+[IgnoreWarnings(TB0015)]
 Private Declare PtrSafe Function GetMem8 Lib "msvbvm60" ( _
                          ByRef pSrc As Any, _
                          ByRef pDst As Any) As Long
+[IgnoreWarnings(TB0015)]
 Private Declare PtrSafe Function GetMem4 Lib "msvbvm60" ( _
                          ByRef pSrc As Any, _
                          ByRef pDst As Any) As Long
