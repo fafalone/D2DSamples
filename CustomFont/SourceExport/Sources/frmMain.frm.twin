@@ -74,7 +74,7 @@ Class frmMain
                                         DWRITE_FONT_STYLE_NORMAL, DWRITE_FONT_STRETCH_NORMAL, _
                                         24, StrPtr("en-us"))
         ' // Color brush
-        Set cBrush = cTarget.CreateSolidColorBrush(D2D1.ColorF(SkyBlue), vbNullPtr)
+        Set cBrush = cTarget.CreateSolidColorBrush(D2D1.ColorF(SkyBlue), ByVal vbNullPtr)
         
         cTextFormat1.SetTextAlignment DWRITE_TEXT_ALIGNMENT_CENTER
         cTextFormat2.SetTextAlignment DWRITE_TEXT_ALIGNMENT_CENTER

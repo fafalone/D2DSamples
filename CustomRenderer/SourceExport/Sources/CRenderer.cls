@@ -38,7 +38,7 @@ Public Sub Initialize( _
     Dim cBitmap         As ID2D1Bitmap
     
     Set cFactory = New WICImagingFactory
-    Set cDecoder = cFactory.CreateDecoderFromFilename(StrPtr(App.Path & "\texture.jpg"), vbNullPtr, _
+    Set cDecoder = cFactory.CreateDecoderFromFilename(StrPtr(App.Path & "\texture.jpg"), ByVal vbNullPtr, _
                                                       GENERIC_READ, WICDecodeMetadataCacheOnLoad)
     Set cFrameDecode = cDecoder.GetFrame(0)
     Set cConverter = cFactory.CreateFormatConverter()
@@ -46,11 +46,11 @@ Public Sub Initialize( _
     cConverter.Initialize cFrameDecode, GUID_WICPixelFormat32bppPBGRA, WICBitmapDitherTypeNone, _
                           Nothing, 0, WICBitmapPaletteTypeMedianCut
                             
-    Set cBitmap = cRenderTarget.CreateBitmapFromWicBitmap(ByVal cConverter, vbNullPtr)
+    Set cBitmap = cRenderTarget.CreateBitmapFromWicBitmap(ByVal cConverter, ByVal vbNullPtr)
     
     Set mcBitmapBrush = cRenderTarget.CreateBitmapBrush(cBitmap, D2D1.BitmapBrushProperties(D2D1_EXTEND_MODE_WRAP, _
-                                                        D2D1_EXTEND_MODE_WRAP), vbNullPtr)
-    Set mcSolidBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(Black), vbNullPtr)
+                                                        D2D1_EXTEND_MODE_WRAP), ByVal vbNullPtr)
+    Set mcSolidBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(Black), ByVal vbNullPtr)
 
     Set mcRenderTarget = cRenderTarget
     Set mcD2DFactory = cD2dFactory

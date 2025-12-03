@@ -67,13 +67,13 @@ Class frmMain
             Set m_cWICFactory = New WICImagingFactory
         End If
         
-        Set cDecoder = m_cWICFactory.CreateDecoderFromFilename(StrPtr(sPath), vbNullPtr, GENERIC_READ, WICDecodeMetadataCacheOnLoad)
+        Set cDecoder = m_cWICFactory.CreateDecoderFromFilename(StrPtr(sPath), ByVal vbNullPtr, GENERIC_READ, WICDecodeMetadataCacheOnLoad)
         Set cFrameDecode = cDecoder.GetFrame(0)
         Set cConverter = m_cWICFactory.CreateFormatConverter()
         
         cConverter.Initialize cFrameDecode, GUID_WICPixelFormat32bppPBGRA, WICBitmapDitherTypeNone, Nothing, 0, WICBitmapPaletteTypeMedianCut
         
-        Set LoadImage = cRenderTarget.CreateBitmapFromWicBitmap(ByVal cConverter, vbNullPtr)
+        Set LoadImage = cRenderTarget.CreateBitmapFromWicBitmap(ByVal cConverter, ByVal vbNullPtr)
         
     End Function
     
@@ -83,7 +83,7 @@ Class frmMain
         
         m_cRenderTarget.Clear D2D1.ColorF(Indigo)
     
-        m_cRenderTarget.DrawImage m_cEffect, vbNullPtr, vbNullPtr
+        m_cRenderTarget.DrawImage m_cEffect, ByVal vbNullPtr, ByVal vbNullPtr
         
         m_cRenderTarget.EndDraw ByVal 0, ByVal 0
         

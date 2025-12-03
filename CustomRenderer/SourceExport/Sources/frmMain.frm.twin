@@ -35,16 +35,23 @@ Class frmMain
                                         
         Set cTextlayout = cDWFactory.CreateTextLayout(StrPtr(sText), Len(sText), cTextFormat, Me.ScaleWidth, Me.ScaleHeight)
         
-        cTextlayout.SetFontFamilyName StrPtr("Courier New"), PointToLongLong(0, 6) 'It's 2 Longs>LongLong, good substitute
-        cTextlayout.SetFontFamilyName StrPtr("Impact"), PointToLongLong(7, 8)
+        Dim tRange As DWRITE_TEXT_RANGE
+        tRange.startPosition = 0: tRange.Length = 6
+        cTextlayout.SetFontFamilyName StrPtr("Courier New"), tRange
+        tRange.startPosition = 7: tRange.Length = 8
+        cTextlayout.SetFontFamilyName StrPtr("Impact"), tRange
         
-        cTextlayout.SetFontStyle DWRITE_FONT_STYLE_ITALIC, PointToLongLong(24, 6)
-        cTextlayout.SetFontWeight DWRITE_FONT_WEIGHT_BOLD, PointToLongLong(31, 5)
+        tRange.startPosition = 24: tRange.Length = 6
+        cTextlayout.SetFontStyle DWRITE_FONT_STYLE_ITALIC, tRange
+        tRange.startPosition = 31: tRange.Length = 6
+        cTextlayout.SetFontWeight DWRITE_FONT_WEIGHT_BOLD, tRange
         cTextlayout.SetParagraphAlignment DWRITE_PARAGRAPH_ALIGNMENT_CENTER
         cTextlayout.SetTextAlignment DWRITE_TEXT_ALIGNMENT_CENTER
         
-        cTextlayout.SetStrikethrough 1, PointToLongLong(0, 6)
-        cTextlayout.SetUnderline 1, PointToLongLong(31, 5)
+        tRange.startPosition = 0: tRange.Length = 6
+        cTextlayout.SetStrikethrough 1, tRange
+        tRange.startPosition = 31: tRange.Length = 5
+        cTextlayout.SetUnderline 1, tRange
         
         Set cCustRender = New CRenderer
         
@@ -57,13 +64,15 @@ Class frmMain
         
         cEffect.Color = D2D1_COLORS.Green
         
-        cTextlayout.SetDrawingEffect cEffect, PointToLongLong(0, 6)
+        tRange.startPosition = 0: tRange.Length = 6
+        cTextlayout.SetDrawingEffect cEffect, tRange
                             
         Set cEffect = New CColorEffect
         
         cEffect.Color = D2D1_COLORS.HotPink
         
-        cTextlayout.SetDrawingEffect cEffect, PointToLongLong(24, 6)
+        tRange.startPosition = 24: tRange.Length = 8
+        cTextlayout.SetDrawingEffect cEffect, tRange
         
     End Sub
     

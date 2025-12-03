@@ -40,15 +40,15 @@ Class frmMain
         
         FillBackground
         
-        Set cBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(MintCream), vbNullPtr)
+        Set cBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(MintCream), ByVal vbNullPtr)
         
         Set cPath = cFactory.CreatePathGeometry
         
         Set cSink = cPath.Open
         
-        cSink.BeginFigure PointFToLongLong(100, 50), D2D1_FIGURE_BEGIN_FILLED
+        cSink.BeginFigure D2D1.Point2F(100, 50), D2D1_FIGURE_BEGIN_FILLED
         
-        cSink.AddLine PointFToLongLong(200, 300)
+        cSink.AddLine D2D1.Point2F(200, 300)
         cSink.AddArc D2D1.ArcSegment(D2D1.Point2F(250, 200), D2D1.SizeF(50, 30), 0, _
                      D2D1_SWEEP_DIRECTION_COUNTER_CLOCKWISE, D2D1_ARC_SIZE_SMALL)
         cSink.AddQuadraticBezier D2D1.QuadraticBezierSegment(D2D1.Point2F(0, 150), D2D1.Point2F(200, 100))
@@ -59,7 +59,7 @@ Class frmMain
         
         cRenderTarget.DrawGeometry cPath, cBrush, 3
         
-        Set cLayer = cRenderTarget.CreateLayer(vbNullPtr)
+        Set cLayer = cRenderTarget.CreateLayer(ByVal vbNullPtr)
         
         cRenderTarget.PushLayer D2D1.LayerParameters(D2D1.RectF_InfiniteRect, cPath, D2D1_ANTIALIAS_MODE_PER_PRIMITIVE, _
                                 D2D1.Matrix3x2F_Identity), cLayer
@@ -79,13 +79,13 @@ Class frmMain
         Dim cMemSurf    As ID2D1BitmapRenderTarget
         Dim cBrush      As ID2D1Brush
         
-        Set cMemSurf = cRenderTarget.CreateCompatibleRenderTarget(D2D1.SizeF(10, 10), vbNullPtr, vbNullPtr, _
+        Set cMemSurf = cRenderTarget.CreateCompatibleRenderTarget(D2D1.SizeF(10, 10), ByVal vbNullPtr, ByVal vbNullPtr, _
                                     D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_NONE)
-        Set cBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(MintCream), vbNullPtr)
+        Set cBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(MintCream), ByVal vbNullPtr)
         
         cMemSurf.BeginDraw
         
-        cMemSurf.DrawLine PointFToLongLong(2, 2), PointFToLongLong(8, 8), cBrush, 5
+        cMemSurf.DrawLine D2D1.Point2F(2, 2), D2D1.Point2F(8, 8), cBrush, 5
         
         cMemSurf.EndDraw ByVal 0, ByVal 0
         

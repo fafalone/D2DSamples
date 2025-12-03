@@ -535,23 +535,27 @@ End Function
 Public Function Matrix3x2F_Rotation( _
                 ByVal fAngle As Single, _
                 ByRef tCenter As D2D1_POINT_2F) As D2D1_MATRIX_3X2_F
-    
-    D2D1MakeRotateMatrix fAngle, PointFToLongLong(tCenter.x, tCenter.y), Matrix3x2F_Rotation
+    Dim tCenter2 As D2D1_POINT_2F
+    tCenter2 = tCenter
+    D2D1MakeRotateMatrix fAngle, tCenter2, Matrix3x2F_Rotation
 End Function
 
 Public Function Matrix3x2F_Rotation2( _
                 ByVal fAngle As Single, _
                 ByVal fCenterX As Single, _
                 ByVal fCentery As Single) As D2D1_MATRIX_3X2_F
-    D2D1MakeRotateMatrix fAngle, PointFToLongLong(fCenterX, fCentery), Matrix3x2F_Rotation2
+    D2D1MakeRotateMatrix fAngle, Point2F(fCenterX, fCentery), Matrix3x2F_Rotation2
 End Function
 
 Public Function Matrix3x2F_Skew( _
                 ByVal fAngleX As Single, _
                 ByVal fAngleY As Single, _
                 ByRef tCenter As D2D1_POINT_2F) As D2D1_MATRIX_3X2_F
-    D2D1MakeSkewMatrix fAngleX, fAngleY, PointFToLongLong(tCenter.x, tCenter.y), Matrix3x2F_Skew
+    Dim tCenter2 As D2D1_POINT_2F
+    tCenter2 = tCenter
+    D2D1MakeSkewMatrix fAngleX, fAngleY, tCenter2, Matrix3x2F_Skew
 End Function
+
 
 Public Function Matrix3x2F_Determinant( _
                 ByRef tMtx As D2D1_MATRIX_3X2_F) As Single

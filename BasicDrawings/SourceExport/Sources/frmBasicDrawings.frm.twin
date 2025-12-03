@@ -29,7 +29,7 @@ Class frmBasicDrawing
                                                             D2D1.HwndRenderTargetProperties(Me.hWnd, D2D1.SizeU()))
                                                             
         ' // Create solid brush for strokes
-        Set cSolidBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(D2D1_COLORS.Red), vbNullPtr)
+        Set cSolidBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(D2D1_COLORS.Red), ByVal vbNullPtr)
         
     End Sub
     
@@ -84,7 +84,7 @@ Class frmBasicDrawing
         cRenderTarget.FillRoundedRectangle D2D1.RoundedRect(D2D1.RectF(250, 250, 450, 300), 30, 50), cSolidBrush
         
         ' // Draw line
-        cRenderTarget.DrawLine PointFToLongLong(5, 20), PointFToLongLong(300, 300), cSolidBrush, 4
+        cRenderTarget.DrawLine D2D1.Point2F(5, 20), D2D1.Point2F(300, 300), cSolidBrush, 4
         
         cRenderTarget.EndDraw ByVal 0, ByVal 0
     
