@@ -29,14 +29,14 @@ Public Sub Initialize( _
     Dim cConverter      As IWICFormatConverter
 
     Set cFactory = New WICImagingFactory
-    Set cDecoder = cFactory.CreateDecoderFromFilename(StrPtr(sFileName), vbNullPtr, GENERIC_READ, WICDecodeMetadataCacheOnLoad)
+    Set cDecoder = cFactory.CreateDecoderFromFilename(StrPtr(sFileName), ByVal vbNullPtr, GENERIC_READ, WICDecodeMetadataCacheOnLoad)
     Set cFrameDecode = cDecoder.GetFrame(0)
     Set cConverter = cFactory.CreateFormatConverter()
     
     cConverter.Initialize cFrameDecode, GUID_WICPixelFormat32bppPBGRA, WICBitmapDitherTypeNone, _
                             Nothing, 0, WICBitmapPaletteTypeMedianCut
                             
-    Set mcBitmap = cRenderTarget.CreateBitmapFromWicBitmap(ByVal cConverter, vbNullPtr)
+    Set mcBitmap = cRenderTarget.CreateBitmapFromWicBitmap(ByVal cConverter, ByVal vbNullPtr)
     
     Set mcRenderTarget = cRenderTarget
     
@@ -52,7 +52,7 @@ Private Sub IDWriteInlineObject_Draw( _
             ByVal pClientDrawingEffect As IUnknown)
    
    mcRenderTarget.DrawBitmap mcBitmap, D2D1.RectF(originX, originY, originX + mcBitmap.GetSize.width, _
-                             originY + mcBitmap.GetSize.Height), 1, 1, vbNullPtr
+                             originY + mcBitmap.GetSize.Height), 1, 1, ByVal vbNullPtr
     
 End Sub
 

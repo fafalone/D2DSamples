@@ -41,27 +41,29 @@ Class frmMain
         Set cTextlayout = cDWFactory.CreateTextLayout(StrPtr(sText), Len(sText), cTextFormat, Me.ScaleWidth, Me.ScaleHeight)
         
         ' // Set different options
-        cTextlayout.SetFontWeight DWRITE_FONT_WEIGHT_BOLD, PointToLongLong(4, 6)
-     
-        cTextlayout.SetFontSize 11 * 96 / 72, PointToLongLong(21, 5)
-    
-        cTextlayout.SetFontStyle DWRITE_FONT_STYLE_ITALIC, PointToLongLong(0, 6)
-        
-        cTextlayout.SetStrikethrough 1, PointToLongLong(29, 7)
+        Dim tRange As DWRITE_TEXT_RANGE
+        tRange.startPosition = 4: tRange.Length = 6
+        cTextlayout.SetFontWeight DWRITE_FONT_WEIGHT_BOLD, tRange
+        tRange.startPosition = 21: tRange.Length = 5
+        cTextlayout.SetFontSize 11 * 96 / 72, tRange
+        tRange.startPosition = 0: tRange.Length = 6
+        cTextlayout.SetFontStyle DWRITE_FONT_STYLE_ITALIC, tRange
+        tRange.startPosition = 29: tRange.Length = 7
+        cTextlayout.SetStrikethrough 1, tRange
         
         cTextlayout.SetTextAlignment DWRITE_TEXT_ALIGNMENT_CENTER
         cTextlayout.SetParagraphAlignment DWRITE_PARAGRAPH_ALIGNMENT_CENTER
+        tRange.startPosition = 6: tRange.Length = 5
+        cTextlayout.SetUnderline 1, tRange
         
-        cTextlayout.SetUnderline 1, PointToLongLong(6, 5)
-        
-        Set cBrush = cTarget.CreateSolidColorBrush(D2D1.ColorF(Red), vbNullPtr)
+        Set cBrush = cTarget.CreateSolidColorBrush(D2D1.ColorF(Red), ByVal vbNullPtr)
                                                                         
         ' // Add inline object
         Set cSmile = New CInlineObject
         
         cSmile.Initialize cTarget, App.Path & "\icon.png"
-        
-        cTextlayout.SetInlineObject cSmile, PointToLongLong(12, 1)
+        tRange.startPosition = 12: tRange.Length = 1
+        cTextlayout.SetInlineObject cSmile, tRange
         
     End Sub
     
@@ -70,8 +72,8 @@ Class frmMain
         cTarget.BeginDraw
         
         cTarget.Clear D2D1.ColorF(Ivory)
-        
-        cTarget.DrawTextLayout PointToLongLong(0, 0), ByVal cTextlayout, cBrush
+ 
+        cTarget.DrawTextLayout D2D1.Point2F(0, 0), ByVal cTextlayout, cBrush
         
         cTarget.EndDraw ByVal 0, ByVal 0
         

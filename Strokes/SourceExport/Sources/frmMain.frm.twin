@@ -38,7 +38,7 @@ Class frmMain
         
         cRenderTarget.BeginDraw
         
-        Set cBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(Wheat), vbNullPtr)
+        Set cBrush = cRenderTarget.CreateSolidColorBrush(D2D1.ColorF(Wheat), ByVal vbNullPtr)
         
         FillBackground
         
@@ -118,13 +118,13 @@ Class frmMain
         
         Set cSink = cPath.Open
         
-        cSink.BeginFigure PointFToLongLong(0, 0), D2D1_FIGURE_BEGIN_HOLLOW
+        cSink.BeginFigure D2D1.Point2F(0, 0), D2D1_FIGURE_BEGIN_HOLLOW
         
-        cSink.AddLine PointFToLongLong(20, 30)
-        cSink.AddLine PointFToLongLong(30, -30)
-        cSink.AddLine PointFToLongLong(50, 40)
-        cSink.AddLine PointFToLongLong(60, -20)
-        cSink.AddLine PointFToLongLong(80, 0)
+        cSink.AddLine D2D1.Point2F(20, 30)
+        cSink.AddLine D2D1.Point2F(30, -30)
+        cSink.AddLine D2D1.Point2F(50, 40)
+        cSink.AddLine D2D1.Point2F(60, -20)
+        cSink.AddLine D2D1.Point2F(80, 0)
         
         cSink.EndFigure D2D1_FIGURE_END_OPEN
         
@@ -142,7 +142,7 @@ Class frmMain
         bPixels = LoadResData(101, "CUSTOM")
         
         ' // Create bitmap based on pixels data
-        Set cBitmap = cRenderTarget.CreateBitmap(SizeToLongLong(36, 32), bPixels(0), 36 * 4, D2D1.BitmapProperties(D2D1.PixelFormat( _
+        Set cBitmap = cRenderTarget.CreateBitmap(D2D1.SizeU(36, 32), bPixels(0), 36 * 4, D2D1.BitmapProperties(D2D1.PixelFormat( _
                      DXGI_FORMAT_B8G8R8A8_UNORM, D2D1_ALPHA_MODE_IGNORE), 96, 96))
         
         Set cBrush = cRenderTarget.CreateBitmapBrush(cBitmap, D2D1.BitmapBrushProperties(D2D1_EXTEND_MODE_WRAP, _

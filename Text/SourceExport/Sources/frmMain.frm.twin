@@ -34,7 +34,7 @@ Class frmMain
                                         19# * 96# / 72#, StrPtr("en-US"))
                                         
         ' // Color brush
-        Set cBrush = cTarget.CreateSolidColorBrush(D2D1.ColorF(Red), vbNullPtr)
+        Set cBrush = cTarget.CreateSolidColorBrush(D2D1.ColorF(Red), ByVal vbNullPtr)
                                         
     End Sub
     

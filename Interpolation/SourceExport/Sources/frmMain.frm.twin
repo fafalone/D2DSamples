@@ -24,15 +24,15 @@ Class frmMain
         Set mcHwndTarget = mcFactory.CreateHwndRenderTarget(D2D1.RenderTargetProperties(D2D1.PixelFormat()), _
                                                             D2D1.HwndRenderTargetProperties( _
                                                             Me.hWnd, D2D1.SizeU(100, 100)))
-        Set mcMemTarget = mcHwndTarget.CreateCompatibleRenderTarget(vbNullPtr, vbNullPtr, vbNullPtr, D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_NONE)
+        Set mcMemTarget = mcHwndTarget.CreateCompatibleRenderTarget(ByVal vbNullPtr, ByVal vbNullPtr, ByVal vbNullPtr, D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_NONE)
         
-        Set cBrush = mcMemTarget.CreateSolidColorBrush(D2D1.ColorF(BurlyWood), vbNullPtr)
+        Set cBrush = mcMemTarget.CreateSolidColorBrush(D2D1.ColorF(BurlyWood), ByVal vbNullPtr)
         
         ' // Paint to mem target
         mcMemTarget.BeginDraw
         
         mcMemTarget.DrawEllipse D2D1.Ellipse(D2D1.Point2F(30, 30), 15, 15), cBrush, 3
-        mcMemTarget.DrawLine PointFToLongLong(0, 0), PointFToLongLong(80, 90), cBrush, 1
+        mcMemTarget.DrawLine D2D1.Point2F(0, 0), D2D1.Point2F(80, 90), cBrush, 1
         
         mcMemTarget.EndDraw ByVal 0, ByVal 0
         
@@ -44,7 +44,7 @@ Class frmMain
         mcHwndTarget.BeginDraw
         
         mcHwndTarget.DrawBitmap mcMemTarget.GetBitmap, D2D1.RectF(0, 0, Me.ScaleWidth, Me.ScaleHeight), _
-                                1, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, vbNullPtr
+                                1, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, ByVal vbNullPtr
         
         mcHwndTarget.EndDraw ByVal 0&, ByVal 0&
         

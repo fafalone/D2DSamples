@@ -33,7 +33,7 @@ Class frmMain
         
         ' // Load bitmap
         Set cWICFactory = New WICImagingFactory
-        Set cDecoder = cWICFactory.CreateDecoderFromFilename(StrPtr(App.Path & "/image.png"), vbNullPtr, GENERIC_READ, WICDecodeMetadataCacheOnLoad)
+        Set cDecoder = cWICFactory.CreateDecoderFromFilename(StrPtr(App.Path & "/image.png"), ByVal vbNullPtr, GENERIC_READ, WICDecodeMetadataCacheOnLoad)
         Set cFrameDecode = cDecoder.GetFrame(0)
         Set cConverter = cWICFactory.CreateFormatConverter()
         
@@ -46,15 +46,15 @@ Class frmMain
         Set cRenderTarget = cFactory.CreateHwndRenderTarget(D2D1.RenderTargetProperties(D2D1.PixelFormat()), _
                                                             D2D1.HwndRenderTargetProperties(Me.hWnd, D2D1.SizeU()))
     
-        Set cBitmap = cRenderTarget.CreateBitmapFromWicBitmap(ByVal cConverter, vbNullPtr)
+        Set cBitmap = cRenderTarget.CreateBitmapFromWicBitmap(ByVal cConverter, ByVal vbNullPtr)
         
         ' // Create bitmap from memory
         ' // We'll draw into this bitmap using Direct2D
-        Set cMemTarget = cRenderTarget.CreateCompatibleRenderTarget(D2D1.SizeF(100, 100), vbNullPtr, _
-                            vbNullPtr, D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_NONE)
+        Set cMemTarget = cRenderTarget.CreateCompatibleRenderTarget(D2D1.SizeF(100, 100), ByVal vbNullPtr, _
+                            ByVal vbNullPtr, D2D1_COMPATIBLE_RENDER_TARGET_OPTIONS_NONE)
                          
         ' // Draw circles
-        Set cBrush = cMemTarget.CreateSolidColorBrush(D2D1.ColorF(Brown), vbNullPtr)
+        Set cBrush = cMemTarget.CreateSolidColorBrush(D2D1.ColorF(Brown), ByVal vbNullPtr)
     
         cMemTarget.BeginDraw
         
@@ -98,7 +98,7 @@ Class frmMain
                                    D2D1.Matrix3x2F_Translation2(30, 30))
         
         ' // Rough
-        cRenderTarget.DrawBitmap cBitmap, vbNullPtr, 1, D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR, vbNullPtr
+        cRenderTarget.DrawBitmap cBitmap, ByVal vbNullPtr, 1, D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR, ByVal vbNullPtr
          
         
         cRenderTarget.SetTransform D2D1.Matrix3x2F_SetProduct( _
@@ -106,7 +106,7 @@ Class frmMain
                                    D2D1.Matrix3x2F_Translation2(150, 30))
                                    
         ' // Linear
-        cRenderTarget.DrawBitmap cBitmap, vbNullPtr, 1, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, vbNullPtr
+        cRenderTarget.DrawBitmap cBitmap, ByVal vbNullPtr, 1, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, ByVal vbNullPtr
         
         
         cRenderTarget.SetTransform D2D1.Matrix3x2F_Identity
@@ -119,14 +119,14 @@ Class frmMain
         cRenderTarget.SetTransform D2D1.Matrix3x2F_Translation2(150, 155)
     
         ' // Draw mem-bitmap
-        cRenderTarget.DrawBitmap cMemBitmap, vbNullPtr, 1, D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR, vbNullPtr
+        cRenderTarget.DrawBitmap cMemBitmap, ByVal vbNullPtr, 1, D2D1_BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR, ByVal vbNullPtr
         
         ' // Stretch bitmap
         cRenderTarget.SetTransform D2D1.Matrix3x2F_SetProduct( _
                                    D2D1.Matrix3x2F_Scale2(2.3, 2, D2D1.Point2F(0, 0)), _
                                    D2D1.Matrix3x2F_Translation2(250, 30))
         
-        cRenderTarget.DrawBitmap cMemBitmap, vbNullPtr, 1, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, vbNullPtr
+        cRenderTarget.DrawBitmap cMemBitmap, byval vbNullPtr, 1, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR,byval vbNullPtr
         
         cRenderTarget.EndDraw ByVal 0&, ByVal 0&
         
